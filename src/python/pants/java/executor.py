@@ -217,8 +217,9 @@ class SubprocessExecutor(Executor):
     command = self._create_command(classpath, main, jvm_options, args, cwd=cwd)
     if main == 'org.pantsbuild.zinc.compiler.Main':
       command = [
-        '/home/cosmicexplorer/tools/pants/zinc-pants-native'
-      ] + command[1:]
+        '/Users/dmcclanahan/tools/pants-v2-because-git-scm-says-not-a-git-repository-lol/zinc-pants-native'
+        # '/home/cosmicexplorer/tools/pants/zinc-pants-native'
+      ] + args
 
     class Runner(self.Runner):
       @property

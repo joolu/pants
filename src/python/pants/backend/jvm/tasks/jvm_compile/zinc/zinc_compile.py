@@ -316,12 +316,17 @@ class BaseZincCompile(JvmCompile):
     scalac_classpath_entries = self.scalac_classpath_entries()
     scala_path = [classpath_entry.path for classpath_entry in scalac_classpath_entries]
 
-    zinc_args = [
-      '-Dscala.boot.class.path={}'.format(':'.join(scala_path + [
-        '/home/cosmicexplorer/.cache/pants/bin/graal/linux/x86_64/1.0.0-rc14/graal/graalvm-ce-1.0.0-rc14/jre/lib/rt.jar',
-      ])),
-      '-Dscala.usejavacp=true',
-    ]
+    if self.execution_strategy == self.SUBPROCESS:
+      zinc_args = [
+        '-Dscala.boot.class.path={}:{}'
+        .format(':'.join(scala_path),
+                # '/home/cosmicexplorer/.cache/pants/bin/graal/linux/x86_64/1.0.0-rc14/graal/graalvm-ce-1.0.0-rc14/jre/lib/rt.jar',
+                '/Users/dmcclanahan/.cache/pants/bin/graal/mac/10.13/1.0.0-rc13/graal/graalvm-ce-1.0.0-rc13/Contents/Home/jre/lib/rt.jar',
+                ),
+        '-Dscala.usejavacp=true',
+      ]
+    else:
+      zinc_args = []
     zinc_args.extend([
       '-log-level', self.get_options().level,
       '-analysis-cache', analysis_cache,
@@ -411,7 +416,8 @@ class BaseZincCompile(JvmCompile):
   def _compile_nonhermetic(self, jvm_options, zinc_args):
     exit_code = self.runjava(classpath=self.get_zinc_compiler_classpath(),
                              main=Zinc.ZINC_COMPILE_MAIN,
-                             jvm_options=jvm_options,
+                             # jvm_options=jvm_options,
+                             jvm_options=[],
                              args=zinc_args,
                              workunit_name=self.name(),
                              workunit_labels=[WorkUnitLabel.COMPILER],
