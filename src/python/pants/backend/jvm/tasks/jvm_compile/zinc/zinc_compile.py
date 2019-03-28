@@ -316,7 +316,12 @@ class BaseZincCompile(JvmCompile):
     scalac_classpath_entries = self.scalac_classpath_entries()
     scala_path = [classpath_entry.path for classpath_entry in scalac_classpath_entries]
 
-    zinc_args = []
+    zinc_args = [
+      '-Dscala.boot.class.path={}'.format(':'.join(scala_path + [
+        '/home/cosmicexplorer/.cache/pants/bin/graal/linux/x86_64/1.0.0-rc14/graal/graalvm-ce-1.0.0-rc14/jre/lib/rt.jar',
+      ])),
+      '-Dscala.usejavacp=true',
+    ]
     zinc_args.extend([
       '-log-level', self.get_options().level,
       '-analysis-cache', analysis_cache,

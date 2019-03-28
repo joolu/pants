@@ -212,7 +212,13 @@ class SubprocessExecutor(Executor):
 
   def _runner(self, classpath, main, jvm_options, args, cwd=None):
     cwd = cwd or os.getcwd()
+    if main == 'org.pantsbuild.zinc.compiler.Main':
+      jvm_options = []
     command = self._create_command(classpath, main, jvm_options, args, cwd=cwd)
+    if main == 'org.pantsbuild.zinc.compiler.Main':
+      command = [
+        '/home/cosmicexplorer/tools/pants/zinc-pants-native'
+      ] + command[1:]
 
     class Runner(self.Runner):
       @property

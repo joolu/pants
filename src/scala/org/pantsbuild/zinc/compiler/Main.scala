@@ -10,6 +10,7 @@ import java.nio.file.Paths
 import sbt.internal.inc.IncrementalCompilerImpl
 import sbt.internal.util.{ ConsoleLogger, ConsoleOut }
 import sbt.util.Level
+import sbt.util.Logger
 import xsbti.CompileFailed
 
 import org.pantsbuild.zinc.analysis.AnalysisMap
@@ -64,11 +65,12 @@ object Main {
     // so we can run zinc without $PATH (as needed in remoting).
     System.setProperty("sbt.log.format", "true")
 
-    val cl =
-      ConsoleLogger(
-        out = ConsoleOut.systemOut,
-        ansiCodesSupported = settings.consoleLog.color
-      )
+    val cl = Logger.Null
+    // val cl =
+    //   ConsoleLogger(
+    //     out = ConsoleOut.systemOut,
+    //     ansiCodesSupported = settings.consoleLog.color
+    //   )
     cl.setLevel(settings.consoleLog.logLevel)
     cl
   }
