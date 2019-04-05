@@ -24,16 +24,6 @@
     "originalClass": "sbt.io.IO$"
   },
   {
-    "annotatedClass": "sbt.util.Target_sbt_util_LogExchange",
-    "methods": [
-      {
-        "annotatedName": "init",
-        "substitute": true
-      }
-    ],
-    "originalClass": "sbt.util.LogExchange"
-  },
-  {
     "annotatedClass": "scala.tools.nsc.substitutions.Target_scala_reflect_internal_util_StatisticsStatics",
     "methods": [
       {
