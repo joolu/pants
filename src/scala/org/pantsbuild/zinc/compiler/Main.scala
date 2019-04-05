@@ -8,26 +8,14 @@ import com.martiansoftware.nailgun.NGContext
 import java.io.File
 import java.nio.file.Paths
 import sbt.internal.inc.IncrementalCompilerImpl
-import sbt.internal.util.{ BasicLogger, ConsoleLogger, ConsoleOut }
-import sbt.util.{ ControlEvent, Level, LogEvent, Logger }
+import sbt.internal.util.{ ConsoleLogger, ConsoleOut }
+import sbt.util.Level
+import sbt.util.Logger
 import xsbti.CompileFailed
 
 import org.pantsbuild.zinc.analysis.AnalysisMap
 import org.pantsbuild.zinc.options.Parsed
 import org.pantsbuild.zinc.util.Util
-
-object DummyLogger extends Logger {
-  override def trace(t: => Throwable): Unit = ???
-
-  override def success(message: => String): Unit = println(message)
-
-  override def log(
-    level: Level.Value,
-    message: => String
-  ): Unit = {
-    println(message)
-  }
-}
 
 /**
  * Command-line main class.
@@ -67,6 +55,25 @@ object Main {
    */
   def printVersion(): Unit = println("%s (%s) %s" format (Command, Description, versionString))
 
+  def mkLogger(settings: Settings) = {
+    // If someone has not explicitly enabled log4j2 JMX, disable it.
+    if (!Util.isSetProperty("log4j2.disable.jmx")) {
+      Util.setProperty("log4j2.disable.jmx", "true")
+    }
+
+    // As per https://github.com/pantsbuild/pants/issues/6160, this is a workaround
+    // so we can run zinc without $PATH (as needed in remoting).
+    System.setProperty("sbt.log.format", "true")
+
+    val cl =
+      ConsoleLogger(
+        out = ConsoleOut.systemOut,
+        ansiCodesSupported = settings.consoleLog.color
+      )
+    cl.setLevel(settings.consoleLog.logLevel)
+    cl
+  }
+
   /**
    * Run a compile.
    */
@@ -87,7 +94,7 @@ object Main {
   }
 
   def mainImpl(settings: Settings, errors: Seq[String], startTime: Long): Unit = {
-    val log = DummyLogger
+    val log = mkLogger(settings)
     val isDebug = settings.consoleLog.logLevel <= Level.Debug
 
     // bail out on any command-line option errors

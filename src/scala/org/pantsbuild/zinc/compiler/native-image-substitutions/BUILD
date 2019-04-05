@@ -4,4 +4,9 @@
 # Substitutions for classes with static methods, which aren't available in Scala.
 java_library(name='statics')
 
-scala_library()
+scala_library(
+  dependencies=[
+    '3rdparty/jvm/org/apache/logging/log4j',
+    '3rdparty/jvm/org/scala-sbt:util-logging',
+  ],
+)

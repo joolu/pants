@@ -53,6 +53,195 @@
     "name": "java.lang.String"
   },
   {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.config.AppendersPlugin"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.config.LoggersPlugin"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.LoggerContext",
+          "org.apache.logging.log4j.core.config.ConfigurationSource",
+          "org.apache.logging.log4j.core.config.builder.api.Component"
+        ]
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.config.plugins.visitors.PluginElementVisitor"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.impl.Log4jContextFactory"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.ContextMapLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.DateLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.EnvironmentLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.JavaLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.JmxRuntimeInputArgumentsLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.JndiLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.Log4jLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.MainMapLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.MapLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.MarkerLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.ResourceBundleLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.StructuredDataLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.SystemPropertiesLookup"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.DatePatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.LevelPatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.LineSeparatorPatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.LoggerPatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.MessagePatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.ThreadNamePatternConverter"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.message.DefaultFlowMessageFactory"
+  },
+  {
     "name": "java.lang.System"
   },
   {
@@ -1402,9 +1591,6 @@
     "name": "org.graalvm.compiler.replacements.arraycopy.ArrayCopySnippets$Counters"
   },
   {
-    "name": "org.graalvm.compiler.replacements.arraycopy.ArrayCopyWithSlowPathNode"
-  },
-  {
     "name": "org.graalvm.compiler.replacements.arraycopy.CheckcastArrayCopyCallNode"
   },
   {
@@ -1715,5 +1901,514 @@
       }
     ],
     "name": "scala.tools.nsc.reporters.ConsoleReporter"
+  },
+  {
+    "methods": [
+      {
+        "name": "getCallerClass",
+        "parameterTypes": [
+          "int"
+        ]
+      }
+    ],
+    "name": "sun.reflect.Reflection"
+  },
+  {
+    "fields": [
+      {
+        "name": "value"
+      }
+    ],
+    "name": "java.lang.String"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.config.AppendersPlugin"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.config.LoggersPlugin"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.LoggerContext",
+          "org.apache.logging.log4j.core.config.ConfigurationSource",
+          "org.apache.logging.log4j.core.config.builder.api.Component"
+        ]
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.config.plugins.visitors.PluginElementVisitor"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.impl.Log4jContextFactory"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.ContextMapLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.DateLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.EnvironmentLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.JavaLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.JmxRuntimeInputArgumentsLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.JndiLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.Log4jLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.MainMapLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.MapLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.MarkerLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.ResourceBundleLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.StructuredDataLookup"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.core.lookup.SystemPropertiesLookup"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.DatePatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.LevelPatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.LineSeparatorPatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.LoggerPatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.MessagePatternConverter"
+  },
+  {
+    "allDeclaredMethods": true,
+    "name": "org.apache.logging.log4j.core.pattern.ThreadNamePatternConverter"
+  },
+  {
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "name": "org.apache.logging.log4j.message.DefaultFlowMessageFactory"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.bytecode.Bytecodes$Flags"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.AbstractBeginNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.AbstractDeoptimizeNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.AbstractEndNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.AbstractFixedGuardNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.AbstractLocalNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.AbstractMergeNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.BeginNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.BeginStateSplitNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.BinaryOpLogicNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.CallTargetNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.ConstantNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.ControlSinkNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.ControlSplitNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.DeoptimizeNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.DeoptimizingFixedWithNextNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.EndNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.FixedGuardNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.FixedNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.FixedWithNextNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.FloatingAnchoredNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.FloatingGuardedNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.FrameState"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.FrameState$TwoSlotMarker"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.GuardNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.IfNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.LogicNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.LoopBeginNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.LoopExitNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.MergeNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.ParameterNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.PhiNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.PiNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.ReturnNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.StartNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.UnaryOpLogicNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.ValueNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.ValuePhiNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.VirtualState"
+  },
+  {
+    "allDeclaredFields": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "org.graalvm.compiler.nodes.ValueNode",
+          "org.graalvm.compiler.nodes.ValueNode"
+        ]
+      }
+    ],
+    "name": "org.graalvm.compiler.nodes.calc.AddNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.BinaryArithmeticNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.BinaryNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.CompareNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.FloatingNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.IntegerConvertNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.IntegerLessThanNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.IntegerLowerThanNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.IsNullNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.LeftShiftNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.MulNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.NarrowNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.ShiftNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.SignExtendNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.SubNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.UnaryNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.calc.ZeroExtendNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.java.AccessArrayNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.java.AccessFieldNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.java.AccessIndexedNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.java.ArrayLengthNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.java.LoadFieldNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.java.LoadIndexedNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.java.MethodCallTargetNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.nodes.virtual.VirtualObjectNode"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.replacements.SnippetCounterNode"
+  },
+  {
+    "name": "org.graalvm.compiler.replacements.StringSubstitutions"
+  },
+  {
+    "name": "org.graalvm.compiler.replacements.amd64.AMD64ArrayIndexOf"
+  },
+  {
+    "name": "org.graalvm.compiler.word.Word"
+  },
+  {
+    "allDeclaredFields": true,
+    "name": "org.graalvm.compiler.word.WordCastNode"
+  },
+  {
+    "fields": [
+      {
+        "name": "theUnsafe"
+      }
+    ],
+    "name": "sun.misc.Unsafe"
+  },
+  {
+    "methods": [
+      {
+        "name": "getCallerClass",
+        "parameterTypes": [
+          "int"
+        ]
+      }
+    ],
+    "name": "sun.reflect.Reflection"
   }
 ]

@@ -67,7 +67,16 @@ object InputUtils {
         .withScalacOptions(scalacOptions.toArray)
         .withJavacOptions(javacOptions.toArray)
         .withOrder(compileOrder)
-    val reporter = ReporterUtil.getReporter(DummyLogger, ReporterManager.getDefaultReporterConfig)
+    val reporter =
+      ReporterUtil.getDefault(
+        ReporterUtil.getDefaultReporterConfig()
+          .withMaximumErrors(Int.MaxValue)
+          .withUseColor(settings.consoleLog.color)
+          .withMsgFilters(settings.consoleLog.msgPredicates.toArray)
+          .withFileFilters(settings.consoleLog.filePredicates.toArray)
+          .withLogLevel(settings.consoleLog.javaLogLevel)
+          .withPositionMapper(positionMapper)
+      )
     val setup =
       Setup.create(
         analysisMap.getPCELookup,
