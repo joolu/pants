@@ -1,4 +1,4 @@
-package scala.tools.nsc.substitutions
+package org.pantsbuild.zinc.compiler.substitutions.scala.tools.nsc
 
 import java.io.File
 

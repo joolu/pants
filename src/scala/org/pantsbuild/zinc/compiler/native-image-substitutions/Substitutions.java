@@ -1,4 +1,4 @@
-package scala.tools.nsc.substitutions;
+package org.pantsbuild.zinc.compiler.substitutions.scala.tools.nsc;
 
 final class Target_scala_reflect_internal_util_StatisticsStatics {
    static boolean areSomeHotStatsEnabled() {
