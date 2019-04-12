@@ -67,7 +67,8 @@ object InputUtils {
         .withScalacOptions(scalacOptions.toArray)
         .withJavacOptions(javacOptions.toArray)
         .withOrder(compileOrder)
-    val reporter = ReporterUtil.getReporter(DummyLogger, ReporterManager.getDefaultReporterConfig)
+    val reporter = ReporterUtil.getReporter(
+      BareBonesLogger, ReporterManager.getDefaultReporterConfig)
     val setup =
       Setup.create(
         analysisMap.getPCELookup,

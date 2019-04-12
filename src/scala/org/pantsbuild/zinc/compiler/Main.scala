@@ -8,7 +8,7 @@ import com.martiansoftware.nailgun.NGContext
 import java.io.File
 import java.nio.file.Paths
 import sbt.internal.inc.IncrementalCompilerImpl
-import sbt.internal.util.{ BasicLogger, ConsoleLogger, ConsoleOut }
+import sbt.internal.util.{ BasicLogger, ConsoleLogger, ConsoleOut, StackTrace }
 import sbt.util.{ ControlEvent, Level, LogEvent, Logger }
 import xsbti.CompileFailed
 
@@ -16,16 +16,39 @@ import org.pantsbuild.zinc.analysis.AnalysisMap
 import org.pantsbuild.zinc.options.Parsed
 import org.pantsbuild.zinc.util.Util
 
-object DummyLogger extends Logger {
-  override def trace(t: => Throwable): Unit = ???
+// The normal sbt logger takes 5 seconds to start up in a native image. This is intended to be
+// equivalent, while allowing the native image to run immediately.
+object BareBonesLogger extends BasicLogger {
+  import scala.Console.{ CYAN, GREEN, RED, YELLOW, RESET }
 
-  override def success(message: => String): Unit = println(message)
+  val out = System.err
+
+  override def trace(t: => Throwable): Unit = out.println(StackTrace.trimmed(t, getTrace))
+
+  override def success(message: => String): Unit = {
+    val colored = s"$GREEN[SUCCESS] $message$RESET"
+    out.println(colored)
+  }
 
   override def log(
     level: Level.Value,
     message: => String
   ): Unit = {
-    println(message)
+    val (colorStart, prefix) = level match {
+      case Level.Debug => (CYAN, "[DEBUG]")
+      case Level.Info => (GREEN, "[INFO]")
+      case Level.Warn => (YELLOW, "[WARN]")
+      case Level.Error => (RED, "[ERROR]")
+    }
+    val colored = s"$colorStart$prefix $message$RESET"
+    out.println(colored)
+  }
+
+  override def logAll(events: Seq[LogEvent]): Unit = events.foreach(log)
+
+  override def control(event: ControlEvent.Value, message: => String): Unit = {
+    val colored = s"$GREEN[CONTROL: $event] $message$RESET"
+    out.println(colored)
   }
 }
 
@@ -87,7 +110,7 @@ object Main {
   }
 
   def mainImpl(settings: Settings, errors: Seq[String], startTime: Long): Unit = {
-    val log = DummyLogger
+    val log = BareBonesLogger
     val isDebug = settings.consoleLog.logLevel <= Level.Debug
 
     // bail out on any command-line option errors
