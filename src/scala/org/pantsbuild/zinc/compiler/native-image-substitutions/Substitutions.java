@@ -1,5 +1,8 @@
 package org.pantsbuild.zinc.compiler.substitutions.scala.tools.nsc;
 
+// NB: This is necessary to avoid the javadoc task erroring out due to the lack of public classes.
+public class Substitutions {}
+
 final class Target_scala_reflect_internal_util_StatisticsStatics {
    static boolean areSomeHotStatsEnabled() {
      return false;
