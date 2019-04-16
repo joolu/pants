@@ -13,11 +13,7 @@ FROM pantsbuild/centos6:latest
 # ----------------------------------------------------------
 # TODO(7064) Add all the below changes to Centos6 image.
 
-RUN yum install sqlite-devel -y
 ARG PYTHON_36_VERSION=3.6.8
-ENV PYENV_ROOT /pyenv-docker-build
-RUN mkdir ${PYENV_ROOT}
-RUN git clone https://github.com/pyenv/pyenv ${PYENV_ROOT}
 RUN /usr/bin/scl enable devtoolset-7 -- bash -c '\
     ${PYENV_ROOT}/bin/pyenv install ${PYTHON_36_VERSION} \
     && ${PYENV_ROOT}/bin/pyenv global ${PYTHON_36_VERSION}'

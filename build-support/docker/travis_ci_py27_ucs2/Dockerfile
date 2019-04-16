@@ -17,10 +17,6 @@ FROM pantsbuild/centos6:latest
 # to ensure the PEX is bootstrapped with UCS 2.
 ARG PYTHON_2_VERSION=2.7.15
 # TODO(7064): remove this yum install line once we update the base Centos6 image to include this dependency.
-RUN yum install sqlite-devel -y
-ENV PYENV_ROOT /pyenv-docker-build
-RUN mkdir ${PYENV_ROOT}
-RUN git clone https://github.com/pyenv/pyenv ${PYENV_ROOT}
 ENV PYTHON_CONFIGURE_OPTS --enable-unicode=ucs2
 RUN /usr/bin/scl enable devtoolset-7 -- bash -c '\
     ${PYENV_ROOT}/bin/pyenv install ${PYTHON_2_VERSION} \
