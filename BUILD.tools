@@ -49,3 +49,18 @@ jar_library(
     jar(org='org.apache.avro', name='avro-ipc', rev=avro_rev),
   ],
 )
+
+target(
+  name='scalac',
+  dependencies=['src/scala/org/pantsbuild/zinc/compiler:scalac'],
+)
+
+target(
+  name='scala-library',
+  dependencies=['src/scala/org/pantsbuild/zinc/compiler:scalac'],
+)
+
+target(
+  name='scala-reflect',
+  dependencies=['src/scala/org/pantsbuild/zinc/compiler:scalac'],
+)
