@@ -253,23 +253,24 @@ class HtmlReporter(Reporter):
 
     # Update the timings.
     def render_timings(timings):
-      timings_dict = timings.get_all()
-      for item in timings_dict:
-        item['timing_string'] = '{:.3f}'.format(item['timing'])
-
-      res = ['<table>']
-      for item in timings_dict:
-        res.append("""<tr><td class="timing-string">{timing:.3f}</td>
-                          <td class="timing-label">{label}""".format(
-          timing=item['timing'],
-          label=item['label']
-        ))
-        if item['is_tool']:
-          res.append("""<i class="icon-cog"></i>""")
-        res.append("""</td></tr>""")
-      res.append('<table>')
-
-      return ''.join(res)
+      return ''
+      # timings_dict = timings.get_all()
+      # for item in timings_dict:
+      #   item['timing_string'] = '{:.3f}'.format(item['timing'])
+      #
+      # res = ['<table>']
+      # for item in timings_dict:
+      #   res.append("""<tr><td class="timing-string">{timing:.3f}</td>
+      #                     <td class="timing-label">{label}""".format(
+      #     timing=item['timing'],
+      #     label=item['label']
+      #   ))
+      #   if item['is_tool']:
+      #     res.append("""<i class="icon-cog"></i>""")
+      #   res.append("""</td></tr>""")
+      # res.append('<table>')
+      #
+      # return ''.join(res)
 
     self._overwrite('cumulative_timings',
                     lambda: render_timings(self.run_tracker.cumulative_timings),

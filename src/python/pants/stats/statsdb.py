@@ -73,31 +73,32 @@ class StatsDB(object):
       create_timings_table('self_timings')
 
   def insert_stats(self, stats):
-    try:
-      with self._cursor() as c:
-        ri = stats['run_info']
-        try:
-          c.execute("""INSERT INTO run_info VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
-                    [ri['id'], int(float(ri['timestamp'])), ri['machine'], ri['user'],
-                     ri['version'], ri['buildroot'], ri['outcome'], ri['cmd_line']])
-        except KeyError as e:
-          raise StatsDBError('Failed to insert stats. Key {} not found in RunInfo: {}'.format(
-            e.args[0], str(ri)))
-
-        rid = ri['id']
-        for table in ['cumulative_timings', 'self_timings']:
-          timings = stats[table]
-          for timing in timings:
-            try:
-              c.execute("""INSERT INTO {} VALUES (?, ?, ?)""".format(table),
-                        [rid, timing['label'], self._to_ms(timing['timing'])])
-            except KeyError as e:
-              raise StatsDBError('Failed to insert stats. Key {} not found in timing: {}'.format(
-                e.args[0], str(timing)))
-
-    except KeyError as e:
-      raise StatsDBError('Failed to insert stats. Key {} not found in stats object.'.format(
-        e.args[0]))
+    pass
+    # try:
+    #   with self._cursor() as c:
+    #     ri = stats['run_info']
+    #     try:
+    #       c.execute("""INSERT INTO run_info VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+    #                 [ri['id'], int(float(ri['timestamp'])), ri['machine'], ri['user'],
+    #                  ri['version'], ri['buildroot'], ri['outcome'], ri['cmd_line']])
+    #     except KeyError as e:
+    #       raise StatsDBError('Failed to insert stats. Key {} not found in RunInfo: {}'.format(
+    #         e.args[0], str(ri)))
+    #
+    #     rid = ri['id']
+    #     for table in ['cumulative_timings', 'self_timings']:
+    #       timings = stats[table]
+    #       for timing in timings:
+    #         try:
+    #           c.execute("""INSERT INTO {} VALUES (?, ?, ?)""".format(table),
+    #                     [rid, timing['label'], self._to_ms(timing['timing'])])
+    #         except KeyError as e:
+    #           raise StatsDBError('Failed to insert stats. Key {} not found in timing: {}'.format(
+    #             e.args[0], str(timing)))
+    #
+    # except KeyError as e:
+    #   raise StatsDBError('Failed to insert stats. Key {} not found in stats object.'.format(
+    #     e.args[0]))
 
   def get_stats_for_cmd_line(self, timing_table, cmd_line_like):
     """Returns a generator over all (label, timing) pairs for a given cmd line.

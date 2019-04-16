@@ -19,7 +19,7 @@ class AggregatedTimings(object):
 
   def __init__(self, path=None):
     # Map path -> timing in seconds (a float)
-    self._timings_by_path = defaultdict(float)
+    self._timings_by_path = defaultdict(list)
     self._tool_labels = set()
     self._path = path
     if path:
@@ -31,7 +31,7 @@ class AggregatedTimings(object):
     secs - a double, so fractional seconds are allowed.
     is_tool - whether this label represents a tool invocation.
     """
-    self._timings_by_path[label] += secs
+    self._timings_by_path[label].append(secs)
     if is_tool:
       self._tool_labels.add(label)
     # Check existence in case we're a clean-all. We don't want to write anything in that case.
@@ -45,5 +45,14 @@ class AggregatedTimings(object):
 
     Each value is a dict: { path: <path>, timing: <timing in seconds> }
     """
-    return [{'label': x[0], 'timing': x[1], 'is_tool': x[0] in self._tool_labels}
+    joined = [{'label': x[0], 'timing': x[1], 'is_tool': x[0] in self._tool_labels}
             for x in sorted(self._timings_by_path.items(), key=lambda x: x[1], reverse=True)]
+    all = []
+    for item in joined:
+      for timing in item['timing']:
+        all.append({
+          'label': item['label'],
+          'timing': timing,
+          'is_tool': item['is_tool']
+        })
+    return all
