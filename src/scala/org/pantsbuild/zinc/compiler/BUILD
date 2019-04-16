@@ -1,6 +1,15 @@
 # Copyright 2017 Pants project contributors (see CONTRIBUTORS.md).
 # Licensed under the Apache License, Version 2.0 (see LICENSE).
 
+jar_library(
+  name='scalac',
+  jars=[
+    jar('org.scala-lang', 'scala-compiler', '2.11.12'),
+    jar('org.scala-lang', 'scala-library', '2.11.12'),
+    jar('org.scala-lang', 'scala-reflect', '2.11.12'),
+  ],
+)
+
 # NB: To build a native-image of zinc *for a specific scalac version*, the scala path
 # (compiler,library,reflect) has to be provided to the native-image invocation with -cp! Also, graal
 # needs to release 1.0.0rc15 with oracle/graal#1071 (a NullPointerException fix).
@@ -12,9 +21,11 @@ scala_library(
     publication_metadata=pants_library('The SBT incremental compiler for nailgun')
   ),
   dependencies=[
+    ':scalac',
     '3rdparty/jvm/com/martiansoftware:nailgun-server',
     '3rdparty/jvm/org/scala-lang/modules:scala-java8-compat',
     '3rdparty/jvm/org/scala-sbt:io',
+    '3rdparty/jvm/org/scala-sbt:sbt-compiler-bridge',
     '3rdparty/jvm/org/scala-sbt:util-logging',
     '3rdparty/jvm/org/scala-sbt:zinc',
     '3rdparty:guava',
