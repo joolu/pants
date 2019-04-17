@@ -1,0 +1,10 @@
+{
+  "resources":[
+    {"pattern":"META-INF/log4j-provider.properties"}, 
+    {"pattern":"META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat"}, 
+    {"pattern":"META-INF/services/javax.script.ScriptEngineFactory"}, 
+    {"pattern":"com/sun/jna/linux-x86-64/libjnidispatch.so"}, 
+    {"pattern":"compiler.properties"}, 
+    {"pattern":"library.properties"}
+  ]
+}
