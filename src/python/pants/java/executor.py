@@ -260,7 +260,7 @@ class SubprocessExecutor(Executor):
     stdout = stdout or sys.stdout
     stderr = stderr or sys.stderr
     env = subprocess_args.pop('env', {}).copy()
-    env['LD_LIBRARY_PATH'] = '/home/cosmicexplorer/tools/graal/substratevm'
+    env['LD_LIBRARY_PATH'] = '/Users/dmcclanahan/tools/graal/substratevm'
     with self._maybe_scrubbed_env():
       logger.debug('Executing: {cmd} args={args} at cwd={cwd}'
                    .format(cmd=' '.join(cmd), args=subprocess_args, cwd=cwd))

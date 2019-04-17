@@ -180,6 +180,8 @@ class BaseZincCompile(JvmCompile):
              help='Location of a compiled zinc native-image to run with --execution-strategy=subprocess.')
     register('--graal-rt-jar-location', advanced=True, type=file_option,
              help='Location of the graal rt.jar (necessary to run with native-image).')
+    register('--graal-jce-jar-location', advanced=True, type=file_option,
+             help='Location of the graal jce.jar (necessary to run with native-image).')
 
   @classmethod
   def subsystem_dependencies(cls):
@@ -424,6 +426,7 @@ class BaseZincCompile(JvmCompile):
       '-Dscala.boot.class.path={}'.format(os.pathsep.join(
         scala_path + [
           self.get_options().graal_rt_jar_location,
+          self.get_options().graal_jce_jar_location,
         ])),
       '-Dscala.usejavacp=true',
     ] + zinc_args
