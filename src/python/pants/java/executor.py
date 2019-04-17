@@ -19,6 +19,7 @@ from pants.util.contextutil import environment_as
 from pants.util.dirutil import relativize_paths
 from pants.util.meta import AbstractClass
 from pants.util.process_handler import subprocess
+from pants.util.strutil import safe_shlex_join
 
 
 logger = logging.getLogger(__name__)
@@ -135,7 +136,16 @@ class Executor(AbstractClass):
     """Subclasses should return a `Runner` that can execute the given java main."""
 
   def _create_command(self, classpath, main, jvm_options, args, cwd=None):
-    cmd = [self._distribution.java]
+    if main == 'org.pantsbuild.zinc.compiler.Main':
+      trace_output_dir = os.path.join(get_buildroot(), 'native-image-traces')
+      cmd = [
+        self._distribution.java,
+        '-agentlib:native-image-agent=config-merge-dir={}'.format(trace_output_dir),
+      ]
+      logger.info('beginning of java cmd with native-image tracing: {}'.format(safe_shlex_join(cmd)))
+    else:
+      cmd = [self._distribution.java]
+
     cmd.extend(jvm_options)
     if cwd:
       classpath = relativize_paths(classpath, cwd)
@@ -249,11 +259,13 @@ class SubprocessExecutor(Executor):
     # stdin should pass it explicitly.
     stdout = stdout or sys.stdout
     stderr = stderr or sys.stderr
+    env = subprocess_args.pop('env', {}).copy()
+    env['LD_LIBRARY_PATH'] = '/home/cosmicexplorer/tools/graal/substratevm'
     with self._maybe_scrubbed_env():
       logger.debug('Executing: {cmd} args={args} at cwd={cwd}'
                    .format(cmd=' '.join(cmd), args=subprocess_args, cwd=cwd))
       try:
         return subprocess.Popen(cmd, cwd=cwd, stdin=stdin, stdout=stdout, stderr=stderr,
-                                **subprocess_args)
+                                env=env, **subprocess_args)
       except OSError as e:
         raise self.Error('Problem executing {0}: {1}'.format(self._distribution.java, e))

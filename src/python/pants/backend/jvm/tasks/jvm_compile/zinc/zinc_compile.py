@@ -399,11 +399,17 @@ class BaseZincCompile(JvmCompile):
         fp.write(arg)
         fp.write('\n')
 
+    def maybe_execute_native_image():
+      if self.get_options().native_image_location is not None:
+        return self._compile_native_image(zinc_args)
+      else:
+        return self._compile_nonhermetic(jvm_options, zinc_args)
+
     return self.execution_strategy_enum.resolve_for_enum_variant({
       self.HERMETIC: lambda: self._compile_hermetic(
         jvm_options, ctx, classes_dir, zinc_args, compiler_bridge_classpath_entry,
         dependency_classpath, scalac_classpath_entries),
-      self.SUBPROCESS: lambda: self._compile_native_image(zinc_args),
+      self.SUBPROCESS: maybe_execute_native_image,
       self.NAILGUN: lambda: self._compile_nonhermetic(jvm_options, zinc_args),
     })()
 
